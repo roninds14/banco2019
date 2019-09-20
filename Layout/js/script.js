@@ -4,6 +4,10 @@ $(document).ready(function() {
 	
 	criar_matriz( "tabela_geral" );
 	
+	$('#modalExemplo').on('shown.bs.modal', function () {
+  		$('.abrir_modal').trigger('focus')
+	});
+	
 	$( ".nav-item").children("a").click(function(){
 				
 		if( $(this).attr("id") != "navbarDropdown" ){

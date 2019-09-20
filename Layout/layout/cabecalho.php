@@ -55,7 +55,7 @@
     				<a class="nav-link" href="#" data-tipo="bordero">Criar Borderô </a>
     			</li>
                 <li class="nav-item">
-    				<a class="nav-link" href="#">Quem Somos </a>
+    				<a class="nav-link" href="#" data-tipo="quemsomos">Quem Somos </a>
     			</li>    			
     		</ul>    		
     	</div>
