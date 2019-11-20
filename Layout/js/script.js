@@ -41,7 +41,7 @@ $(document).ready(function() {
 		
 		if(qtd>4) return;		
 		
-		$(this).parent().parent().append('<div class="col-12 col-md-3 offset-md-3"><div class="form-group"><label for="fone_0'+qtd+'">Número Telefone</label><input type="text" name="fone_0'+qtd+'" id="fone_0'+qtd+'" class="form-control" placeholder="00 00000-0000" /></div></div><div class="col-11 col-md-3"><div class="form-group"><label for="obs_0'+qtd+'">Observação</label><input type="text" name="obs_0'+qtd+'" id="obs_0'+qtd+'" class="form-control" placeholder="...." /></div></div><div class="col-1 col-md-3 p-4"><button type="button" id="add_fone" class="btn btn-danger btn-lg" style="display:inherit" data-qtd="'+qtd+'">+</button></div>');
+		$(this).parent().parent().append('<div class="col-12 col-md-3 offset-md-3"><div class="form-group"><label for="fone_0'+qtd+'">Número Telefone</label><input type="text" name="fone_0'+qtd+'" id="fone_0'+qtd+'" class="form-control fones" placeholder="00 00000-0000" /></div></div><div class="col-11 col-md-3"><div class="form-group"><label for="obs_0'+qtd+'">Observação</label><input type="text" name="obs_0'+qtd+'" id="obs_0'+qtd+'" class="form-control" placeholder="...." /></div></div><div class="col-1 col-md-3 p-4"><button type="button" id="add_fone" class="btn btn-danger btn-lg" style="display:inherit" data-qtd="'+qtd+'">+</button></div>');
 		
 		$(this).remove();
 	});

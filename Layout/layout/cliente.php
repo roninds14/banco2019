@@ -14,7 +14,7 @@
         <div class="col-12 col-md-3 offset-md-3">
             <div class="form-group">
             	<label for="fone_01">Número Telefone</label>
-                <input type="text" name="fone_01" id="fone_01" class="form-control" placeholder="00 00000-0000" />
+                <input type="text" name="fone_01" id="fone_01" class="form-control fones" placeholder="00 00000-0000" />
             </div>
         </div>
 		<div class="col-11 col-md-3">
