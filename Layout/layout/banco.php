@@ -1,6 +1,6 @@
 <!--Para adicionar banco-->
 <article id ="form_add_banco" class="container">
-    <form>
+    <form method="post" action="interface/inserir_banco.php">
     <legend>Adicionar Banco</legend>
     <div class="row">
         <div class="col-12 col-md-3 offset-md-3">

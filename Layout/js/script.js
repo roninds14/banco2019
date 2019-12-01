@@ -119,4 +119,48 @@ $(document).ready(function() {
 		
 	});
 	
+	$(document).on("change","#banco", function(){
+		$.post( "interface/select_agencia.php",{ banco: $(this).val() }, function( data, status ){
+			if( status == "success"){
+				$("#agencia").empty();
+				
+				$("#agencia").append( data );			
+			}		
+		});		
+	});
+	
+	$(document).on("click","#buscar_correntista", function(){
+		$.post( "interface/busca_correntista.php",{ nome: $("#nome").val(), cpf: $("#cpf").val() }, function( data, status ){
+			if( status == "success"){
+				$(".modal-title").html("Correntistas encontrados");
+				
+				$(".modal-body").html( data );
+			}		
+		});		
+	});
+	
+	$(document).on("click", ".tr_corr", function(){
+		$("#close_modal").click();
+		
+		$("#nome").val( $("td:eq(1)").html() );
+		
+		$("#cpf").val( $("td:eq(2)").html() );
+		
+		$.post( "interface/busca_conta.php",{ conta: $(this).first().children("td").html() }, function( data, status ){
+			if( status == "success"){
+				obj = JSON.parse( data );
+				
+				$("#banco").val( obj.ban_codigo );		
+								
+				$("#agencia").append( "<option value='"+obj.age_codigo+"'>"+ obj.age_numero +"</option>" );
+				
+				$("#agencia").val( obj.age_codigo );
+				
+				$("#conta").append( "<option value='"+obj.con_id+"'>"+ obj.con_numero +"</option>" );
+				
+				$("#conta").val( obj.con_id );
+			}		
+		});	
+		
+	});		
 });

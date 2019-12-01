@@ -1,6 +1,12 @@
+<?php 
+if ( session_status() !== PHP_SESSION_ACTIVE )
+	session_start();	  
+?>
+
+
 <!--Para adicionar agência-->
 <article id ="form_add_agencia" class="container">
-    <form>
+    <form method="post" action="interface/inserir_agencia.php">
     <legend>Adicionar Agência</legend>    
     <div class = "row">
        <div class="col-12 col-md-3 offset-md-3">
@@ -8,9 +14,9 @@
                 <label for="banco">Banco</label>
                     <select name="banco" class="form-control">
                         <option value="0">Selecione o Banco</option>
-                        <option value="1">Banco 1</option>
-                        <option value="2">Banco 2</option>
-                        <option value="3">Banco 3</option>
+                        <?php
+							require_once "../interface/select_banco.php";
+						?>						
                     </select>
             </div>
         </div>

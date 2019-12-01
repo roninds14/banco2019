@@ -1,6 +1,6 @@
 <!--Para realizar adição de uma pessoa ou correntista-->
 <article id ="form_add_correntista" class="container">
-    <form>
+    <form method="post" action="interface/inserir_cliente.php">
     <legend>Adicionar Cliente</legend>
     <div class="row">
     	<div class="col-12 col-md-6 offset-md-3">

@@ -1,12 +1,20 @@
 <!--Para realizar adição de uma pessoa ou correntista-->
 <article id ="form_add_correntista" class="container">
-    <form>
-    <legend>Adicionar Cliente</legend>
+    <form method="post" action="interface/inserir_correntista.php">
+    <legend>Adicionar Correntista</legend>
     <div class="row">
     	<div class="col-12 col-md-6 offset-md-3">
         	<div class="form-group">
          		<label for="nome">Nome</label>
-            	<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do Cliente"/>
+            	<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do Correntista"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-12 col-md-6 offset-md-3">
+        	<div class="form-group">
+         		<label for="cpf">CPF</label>
+            	<input type="text" name="cpf" id="cpf" class="form-control" placeholder="000.000.000-00"/>
             </div>
         </div>
     </div>
@@ -14,29 +22,35 @@
     	<div class="col-12 col-md-2 offset-md-3">
         	<div class="form-group">
                 <label for="banco">Banco</label>
-                    <select name="banco" class="form-control">
+                    <select id="banco" name="banco" class="form-control">
                         <option value="0">Selecione</option>
-                        <option value="1">Banco 1</option>
-                        <option value="2">Banco 2</option>
-                        <option value="3">Banco 3</option>
+                        <?php
+							require_once "../interface/select_banco.php";
+						?>	
                     </select>
             </div>
         </div>
         <div class="col-12 col-md-2">
         	<div class="form-group">
                 <label for="agencia">Agência</label>
-                    <select name="agencia" class="form-control">
-                        <option value="0">Selecione</option>
-                        <option value="1">Agência 1</option>
-                        <option value="2">Agência 2</option>
-                        <option value="3">Agência 3</option>
+                    <select id="agencia" name="agencia" class="form-control">
+                    	<option value='0'>Selecione o Banco</option>                        
                     </select>
             </div>
         </div>
         <div class="col-12 col-md-2">
         	<div class="form-group">
-         		<label for="cheque">Conta</label>
-            	<input type="text" name="cheque" id="cheque" class="form-control" placeholder="00000000000"/>
+         		<label for="tipo_conta">Tipo de Conta</label>
+            	 <select id="tipo_conta" name="tipo_conta" class="form-control">
+                        <option value="1">Conta Corrente</option>
+                        <option value="2">Poupança</option>                        
+                 </select>
+            </div>
+        </div>
+        <div class="col-12 col-md-2">
+        	<div class="form-group">
+         		<label for="num_conta">Número</label>
+            	<input type="text" name="num_conta" id="num_conta" class="form-control" placeholder="00000000000"/>
             </div>
         </div>
     </div>

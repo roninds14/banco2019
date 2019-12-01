@@ -53,6 +53,74 @@ session_start();
 	}
 
 ?>
+
+<?php
+    if( isset( $_SESSION['cliente'] ) ){
+		if( $_SESSION['cliente'] ){
+?>
+			<script type="text/javascript"> alert("Cliente inserido com sucesso!"); </script>
+<?php 
+		}else{
+?>
+			<script type="text/javascript"> alert("Erro ao cadastrar o cliente!"); </script>
+<?php
+		}
+		
+		unset( $_SESSION['cliente'] );
+	}
+
+?>
+
+<?php
+    if( isset( $_SESSION['banco'] ) ){
+		if( $_SESSION['banco'] ){
+?>
+			<script type="text/javascript"> alert("Banco inserido com sucesso!"); </script>
+<?php 
+		}else{
+?>
+			<script type="text/javascript"> alert("Erro ao cadastrar o banco!"); </script>
+<?php
+		}
+		
+		unset( $_SESSION['banco'] );
+	}
+
+?>
+
+<?php
+    if( isset( $_SESSION['agencia'] ) ){
+		if( $_SESSION['agencia'] ){
+?>
+			<script type="text/javascript"> alert("Agência inserida com sucesso!"); </script>
+<?php 
+		}else{
+?>
+			<script type="text/javascript"> alert("Erro ao cadastrar agência!"); </script>
+<?php
+		}
+		
+		unset( $_SESSION['agencia'] );
+	}
+
+?>
+
+<?php
+    if( isset( $_SESSION['correntista'] ) ){
+		if( $_SESSION['correntista'] ){
+?>
+			<script type="text/javascript"> alert("Correntista inserida com sucesso!"); </script>
+<?php 
+		}else{
+?>
+			<script type="text/javascript"> alert("Erro ao cadastrar o correntista!"); </script>
+<?php
+		}
+		
+		unset( $_SESSION['correntista'] );
+	}
+
+?>
     
 </head>
 
@@ -75,7 +143,7 @@ session_start();
     
     <?php
 	
-		require_once "layout/rodape.php";
+		//require_once "layout/rodape.php";
     
 	?> 
     
@@ -84,17 +152,18 @@ session_start();
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Título do modal</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <button id="close_modal" type="button" class="close" data-dismiss="modal" aria-label="Fechar">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <p>Texto do corpo do modal, é aqui.</p>
+          <div class="modal-body">            
           </div>
+          <!--
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             <button type="button" class="btn btn-primary">Salvar mudanças</button>
-          </div>
+          </div> 
+          -->
         </div>
       </div>
     </div> 
