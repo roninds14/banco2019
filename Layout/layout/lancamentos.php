@@ -1,26 +1,31 @@
+   <?php 
+   if ( session_status() !== PHP_SESSION_ACTIVE )
+	    session_start();	  
+    ?>
+   
+   
    <!-- Apresentação dos Dados Solicitados -->
     	<article id = "dados" class = "container">
         	<div class = "row dados_correntista dados">
-                <div class="col-auto">Nome: Fulano de Tal</div>
-                <div class="col-auto ml-auto"><code>Cadastrado: dd/mm/aa</code></div>
-                <div class="col-12 dados_correntista dados">CPF: 000.000.000-00</div>
-                <div class="col-12 dados_correntista dados">Telefone(s):(00 00000-0000)</div>
+                <div class="col-12">
+                    <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4"><?php $hora = date('H'); if( intval( $hora ) < 16 ) echo "Bom dia, "; else if( intval( $hora ) < 20 ) echo "Boa tarde, "; else echo "Boa noite, "; echo $_SESSION['dados']['usu_nome']."!"; ?></h1>
+                        <p class="lead">CPF: <?= $_SESSION['dados']['usu_cpf']?></p>
+                        
+                        <p class="lead">E-mail: <?= $_SESSION['dados']['usu_email']?></p>
+                        
+                        <p class="lead">Telefones: <?= $_SESSION['dados']['telefones']?></p>
+                        
+                        <p class="lead">Data do Cadastro: <?= date_format( date_create( $_SESSION['dados']['data_cadastro'] ), "d/m/Y" );?></p> 
+                        
+                        <form method="post" action="interface/logout.php">
+                        	<button id='logout' type = "submit" class="btn btn-danger">Sair</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="row dados_banco dados_agencia dados">          
-                <div class="col-12">Nome do Banco</div>
-            </div>
-            <div class="row dados_agencia dados">
-            	<div class="col-12">Agência: 000.000</div>
-                <div class="col-12">Telefone(s): (00 00000-0000)</div>           
-            </div>
-            <div class="row dados_cheque dados">
-                <div class="col-12">Cheque n°: 000.000.000</div>
-           	</div>
-             <div class="row dados_data dados">
-                <div class="col-12">Cheques do dia: dd/mm/aa</div>
-            </div>
-            
-            <a id="btn_voltar" class="waves-effect waves-light btn blue dados"><i class="material-icons left">arrow_back</i>Voltar</a>           
         </article>
         
         <article id="tabela_resultado" class="container">

@@ -1,6 +1,12 @@
 
 <!-- Cabeçalho-->
     <div class="container">
+        <?php
+				
+			if( !isset( $_SESSION['logado'] ) ) {
+		
+		?>
+        
         <form class="form-inline">
         	<div class="col-auto" style="padding:5px 0">
         		<button class="btn btn-outline-success" type="button" data-tipo="cadastrar">Cadastrar</button>
@@ -13,6 +19,9 @@
                 <button class="btn btn-sm btn-outline-secondary" type="button" data-tipo="login">Login</button>
         	</div>
         </form>
+        <?php 
+		}		
+		?>
     </div>	
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-success col">	
 		<a class="navbar-brand mb-0 h1" href="#">
@@ -26,11 +35,16 @@
     	<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     		<ul class="navbar-nav">
     			<li class="nav-item">
-    				<a class="nav-link active" data-tipo="home" href="#">Home </a>
+    				<a class="nav-link <?= isset( $_SESSION['logado'] )? "": "active"; ?>" data-tipo="home" href="#">Home </a>
     			</li>
-                <li class="nav-item">
-    				<a class="nav-link " data-tipo="lancamentos" href="#">Últimos Lançamentos </a>
-    			</li>    			
+                <?php
+				
+				if( isset( $_SESSION['logado'] ) ) {
+				
+				?>
+				
+                <li class="nav-item"><a class="nav-link <?= isset( $_SESSION['logado'] )? "active": ""; ?>" data-tipo="lancamentos" href="#">Últimos Lançamentos </a></li>
+				
     			<li class="nav-item dropdown">
     				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     					Inserir
@@ -54,6 +68,9 @@
                 <li class="nav-item">
     				<a class="nav-link" href="#" data-tipo="bordero">Criar Borderô </a>
     			</li>
+                <?php
+				}
+				?>
                 <li class="nav-item">
     				<a class="nav-link" href="#" data-tipo="quemsomos">Quem Somos </a>
     			</li>    			

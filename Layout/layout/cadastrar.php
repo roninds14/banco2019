@@ -1,18 +1,18 @@
 <!--Para realizar adição de uma pessoa ou correntista-->
 <article id ="form_add_correntista" class="container">
-    <form>
+    <form method="post" action="interface/cadastar.php">
     <legend>Seja Bem Vindo!</legend>
     <div class="row">
     	<div class="col-12 col-md-3 offset-md-3">
         	<div class="form-group">
          		<label for="nome">Nome</label>
-            	<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do Cliente"/>
+            	<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do Cliente" required="required"/>
             </div>
         </div>
         <div class="col-12 col-md-3">
         	<div class="form-group">
          		<label for="cpf">CPF</label>
-            	<input type="text" name="cpf" id="cpf" class="form-control" placeholder="000.000.000-00"/>
+            	<input type="text" name="cpf" id="cpf" class="form-control" placeholder="000.000.000-00" required="required"/>
             </div>
         </div>
     </div>
@@ -20,13 +20,13 @@
     	<div class="col-12 col-md-3 offset-md-3">
         	<div class="form-group">
          		<label for="email">E-mail</label>
-            	<input type="email" name="email" id="email" class="form-control" placeholder="usuarioo@servidor.aaa"/>
+            	<input type="email" name="email" id="email" class="form-control" placeholder="usuarioo@servidor.aaa" required="required"/>
             </div>
         </div>
         <div class="col-12 col-md-3">
         	<div class="form-group">
          		<label for="re_email">Confirme o e-mail</label>
-            	<input type="re_email" name="re_email" id="re_email" class="form-control" placeholder="usuarioo@servidor.aaa"/>
+            	<input type="re_email" name="re_email" id="re_email" class="form-control" placeholder="usuarioo@servidor.aaa" required="required"/>
             </div>
         </div>
     </div>
@@ -34,13 +34,13 @@
     	<div class="col-12 col-md-3 offset-md-3">
         	<div class="form-group">
          		<label for="senha">Senha</label>
-            	<input type="password" name="senha" id="senha" class="form-control"/>
+            	<input type="password" name="senha" id="senha" class="form-control" required="required">
             </div>
         </div>
         <div class="col-12 col-md-3">
         	<div class="form-group">
          		<label for="re_senha">Confirme senha</label>
-            	<input type="password" name="re_senha" id="re_senha" class="form-control"/>
+            	<input type="password" name="re_senha" id="re_senha" class="form-control" required="required"/>
             </div>
         </div>
     </div>

@@ -1,11 +1,11 @@
 <!--Para realizar adição de uma pessoa ou correntista-->
 <article id ="form_add_correntista" class="container">
-    <form>
+    <form method="post" action="interface/logar.php">
     <legend>Logar!</legend>
     <div class="row">    	
         <div class="col-12 col-md-4 offset-md-4">
         	<div class="form-group">
-         		<label for="usuario">E-mail / CPF</label>
+         		<label for="usuario">CPF</label>
             	<input type="text" name="usuario" id="usuario" class="form-control" placeholder="E-mail ou CPF"/>
             </div>
         </div>

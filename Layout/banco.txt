@@ -1,0 +1,113 @@
+CREATE TABLE agencia (
+  banco_ban_codigo INTEGER UNSIGNED NOT NULL,
+  age_codigo VARCHAR(9) NOT NULL,
+  telefone_tel_id INTEGER UNSIGNED NOT NULL,
+  age_end TEXT NULL,
+  age_valida SMALLINT UNSIGNED NULL,
+  PRIMARY KEY(banco_ban_codigo, age_codigo, telefone_tel_id),
+  INDEX agencia_id(banco_ban_codigo),
+  INDEX agencia_FKIndex2(telefone_tel_id)
+);
+
+CREATE TABLE banco (
+  ban_codigo INTEGER UNSIGNED NOT NULL,
+  ban_nome VARCHAR(40)) NULL,
+  ban_descricao TEXT NULL,
+  ban_valida SMALLINT UNSIGNED NULL,
+  PRIMARY KEY(ban_codigo)
+);
+
+CREATE TABLE bordero (
+  bor_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  cliente_cli_cpf VARCHAR(11) NOT NULL,
+  bor_data DATE NULL,
+  bor_descricao TEXT NULL,
+  bor_historico TEXT NULL,
+  bor_taxa DOUBLE NULL,
+  bor_valor_juros DOUBLE NULL,
+  bor_valor_liquido DOUBLE NULL,
+  bor_valor_bruto DOUBLE NULL,
+  PRIMARY KEY(bor_id),
+  INDEX cliente_id(cliente_cli_cpf)
+);
+
+CREATE TABLE cheque (
+  che_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  conta_agencia_telefone_tel_id INTEGER UNSIGNED NOT NULL,
+  conta_agencia_banco_ban_codigo INTEGER UNSIGNED NOT NULL,
+  conta_agencia_age_codigo VARCHAR(9) NOT NULL,
+  conta_con_numero VARCHAR(9) NOT NULL,
+  situacao_sit_id INTEGER UNSIGNED NOT NULL,
+  bordero_bor_id INTEGER UNSIGNED NOT NULL,
+  che_numero VARCHAR(9) NULL,
+  che_data DATE NULL,
+  che_valor DOUBLE NULL,
+  PRIMARY KEY(che_id),
+  INDEX bordero_id(bordero_bor_id),
+  INDEX situacao_id(situacao_sit_id),
+  INDEX conta_id(conta_con_numero, conta_agencia_age_codigo, conta_agencia_banco_ban_codigo, conta_agencia_telefone_tel_id)
+);
+
+CREATE TABLE cliente (
+  cli_cpf VARCHAR(11) NOT NULL,
+  empresa_emp_id INTEGER UNSIGNED NOT NULL,
+  cli_nome VARCHAR(30) NULL,
+  cli_data_cadastro DATE NULL,
+  cli_tipo INTEGER UNSIGNED NULL,
+  PRIMARY KEY(cli_cpf),
+  INDEX cliente_cpf(cli_cpf),
+  INDEX empresa_id(empresa_emp_id)
+);
+
+CREATE TABLE conta (
+  con_numero VARCHAR(9) NOT NULL AUTO_INCREMENT,
+  agencia_age_codigo VARCHAR(9) NOT NULL,
+  agencia_banco_ban_codigo INTEGER UNSIGNED NOT NULL,
+  agencia_telefone_tel_id INTEGER UNSIGNED NOT NULL,
+  cliente_cli_cpf VARCHAR(11) NOT NULL,
+  tipo_conta_tip_id INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(con_numero, agencia_age_codigo, agencia_banco_ban_codigo, agencia_telefone_tel_id),
+  INDEX tipo_id(tipo_conta_tip_id),
+  INDEX cliente_id(cliente_cli_cpf),
+  INDEX conta_FKIndex3(agencia_banco_ban_codigo, agencia_age_codigo, agencia_telefone_tel_id)
+);
+
+CREATE TABLE empresa (
+  emp_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  emp_nome INTEGER UNSIGNED NULL,
+  emp_nivel INTEGER UNSIGNED NULL,
+  PRIMARY KEY(emp_id)
+);
+
+CREATE TABLE situacao (
+  sit_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  sit_nome VARCHAR(20) NULL,
+  PRIMARY KEY(sit_id)
+);
+
+CREATE TABLE telefone (
+  tel_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  tel_numero VARCHAR(11)) NULL,
+  tel_obs VARCHAR(30) NULL,
+  tel_tabela INTEGER UNSIGNED NULL,
+  tel_foreng_key INTEGER UNSIGNED NULL,
+  PRIMARY KEY(tel_id)
+);
+
+CREATE TABLE tipo_conta (
+  tip_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  tip_nome VARCHAR(20) NULL,
+  PRIMARY KEY(tip_id)
+);
+
+CREATE TABLE usuario (
+  usu_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  empresa_emp_id INTEGER UNSIGNED NOT NULL,
+  usu_nome VARCHAR(25) NULL,
+  usu_login VARCHAR(10) NULL,
+  usu_senha VARCHAR(32) NULL,
+  usu_cpf VARCHAR(11) NULL,
+  PRIMARY KEY(usu_id),
+  INDEX usuario_FKIndex1(empresa_emp_id)
+);
+

@@ -118,15 +118,5 @@ $(document).ready(function() {
 		$( mostrar ).css("display","block");			
 		
 	});
-});
-
-$(window).scroll(function(){
-    
-	var scrollMargin = 48 - parseInt($(document).scrollTop() );
 	
-	if( scrollMargin > 0 )
-		$("nav").css("margin-top", scrollMargin + "px" );
-	else
-		$("nav").css("margin-top", "0" );
-    
 });

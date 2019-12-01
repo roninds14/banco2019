@@ -1,3 +1,11 @@
+<?php 
+session_start();
+
+//session_destroy();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="br"><head>
     
@@ -19,6 +27,33 @@
 		nav{margin-top:48px }
     </style>
     
+<?php
+    if( isset( $_SESSION['bad_login'] ) ){
+?>
+	<script type="text/javascript"> alert("Erro ao Logar"); </script>
+<?php 
+	unset( $_SESSION['bad_login'] );
+}
+
+?>
+
+<?php
+    if( isset( $_SESSION['cadastro'] ) ){
+		if( $_SESSION['cadastro'] ){
+?>
+			<script type="text/javascript"> alert("Cadastro efetuado com sucesso!"); </script>
+<?php 
+		}else{
+?>
+			<script type="text/javascript"> alert("Erro ao cadastrar!"); </script>
+<?php
+		}
+		
+		unset( $_SESSION['cadastro'] );
+	}
+
+?>
+    
 </head>
 
 <body>	
@@ -28,9 +63,12 @@
     
 	?>           
     <section style="margin-top:120px">    	
-        <?php
-		
-			require_once "layout/home.php";
+        <?php		
+
+			if( isset( $_SESSION['logado'] ) )
+				require_once "layout/lancamentos.php";
+			else
+				require_once "layout/home.php";
         
 		?>        
     </section>
@@ -72,5 +110,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/script.js" ></script>
     <script type="text/javascript" src="js/tableSort.js"></script>
+    
+    <?php 
+		if( !isset($_SESSION["logado"] ) ) {
+	?>
+    <script type="text/javascript">
+		$(window).scroll(function(){
+		
+		var scrollMargin = 48 - parseInt($(document).scrollTop() );
+		
+		if( scrollMargin > 0 )
+			$("nav").css("margin-top", scrollMargin + "px" );
+		else
+			$("nav").css("margin-top", "0" );
+	});
+	</script>
+    <?php 
+	}else{
+	?>
+    <script type="text/javascript">
+    	$(document).ready(function(e) {
+            $("nav").css("margin-top", "0" );
+        });
+    </script>
+    <?php } ?>
+    </html>
+    </script>
 
 </html>
