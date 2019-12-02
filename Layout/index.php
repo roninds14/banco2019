@@ -37,6 +37,8 @@ session_start();
 
 ?>
 
+
+
 <?php
     if( isset( $_SESSION['cadastro'] ) ){
 		if( $_SESSION['cadastro'] ){
@@ -118,6 +120,40 @@ session_start();
 		}
 		
 		unset( $_SESSION['correntista'] );
+	}
+
+?>
+
+<?php
+    if( isset( $_SESSION['cheque'] ) ){
+		if( $_SESSION['cheque'] ){
+?>
+			<script type="text/javascript"> alert("Cheque inserido com sucesso!"); </script>
+<?php 
+		}else{
+?>
+			<script type="text/javascript"> alert("Erro ao cadastrar o cheque!"); </script>
+<?php
+		}
+		
+		unset( $_SESSION['cheque'] );
+	}
+
+?>
+
+<?php
+    if( isset( $_SESSION['bordero'] ) ){
+		if( $_SESSION['bordero'] ){
+?>
+			<script type="text/javascript"> alert("Borderô criado com sucesso!"); </script>
+<?php 
+		}else{
+?>
+			<script type="text/javascript"> alert("Erro ao criar bordero!"); </script>
+<?php
+		}
+		
+		unset( $_SESSION['bordero'] );
 	}
 
 ?>

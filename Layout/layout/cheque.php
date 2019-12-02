@@ -5,7 +5,7 @@ if ( session_status() !== PHP_SESSION_ACTIVE )
 
 <!--Para criar lote de cheque-->
 <article class="container">
-	<form>
+	<form method="post" action="interface/inserir_cheque.php">
 	<legend>Adicionar Cheque</legend>
     <div class = "row">
     	<div class="col-sm-9 offset-sm-3">
@@ -82,10 +82,10 @@ if ( session_status() !== PHP_SESSION_ACTIVE )
         </div>
 		<div class="col-12 col-md-2">
         	<div class="form-group">
-                <label for="agencia">
+                <label for="situacao">
                 	Situação
                 </label>
-                <select name="agencia" class="form-control">
+                <select name="situacao" class="form-control">
                     <option value="0">Selecione</option>
                     <option value="1">Pré-Datado</option>
                     <option value="2">Sacado</option>

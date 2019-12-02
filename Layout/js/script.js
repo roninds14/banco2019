@@ -142,9 +142,9 @@ $(document).ready(function() {
 	$(document).on("click", ".tr_corr", function(){
 		$("#close_modal").click();
 		
-		$("#nome").val( $("td:eq(1)").html() );
+		$("#nome").val( $(this).children("td:eq(1)").html() );
 		
-		$("#cpf").val( $("td:eq(2)").html() );
+		$("#cpf").val( $(this).children("td:eq(2)").html() );
 		
 		$.post( "interface/busca_conta.php",{ conta: $(this).first().children("td").html() }, function( data, status ){
 			if( status == "success"){
@@ -160,7 +160,75 @@ $(document).ready(function() {
 				
 				$("#conta").val( obj.con_id );
 			}		
-		});	
+		});
+	});
+	
+	$(document).on("click", "#procura_cheque", function(){
+		$.post( "interface/busca_cheque.php", function( data, status ){
+			if( status == "success"){
+				$(".modal-title").html("Cheques encontrados");
+				
+				$(".modal-body").html( data );
+			}		
+		});
+	});
+	
+	var virgula = "";
+	
+	$(document).on("click", ".tr_che", function(){
+		$("#row_bor").css("display","flex");
 		
-	});		
+		var linha = $(this);
+		
+		$( linha ).removeClass("tr_che");
+		
+		$("#ids").val( $("#ids").val() + virgula + $( linha ).children("td").html() );
+		
+		virgula = ",";
+		
+		$("#tb_bordero").append( $(linha) );
+		
+		var bruto = 0.0;
+		
+		$("#tb_bordero").children("tr").each(function(index, element) {
+			bruto += parseFloat( $( element ).children("td:eq(5)").html() );
+		});		
+		
+		$("#bruto").val( bruto );
+		
+		if( $("#data").val() != "" && $("#taxa").val() > 0 )
+			calcula_desconto();		
+	});
+	
+	$(document).on("keyup","#taxa",function(){		
+		if( $("#data").val() != "" )
+			calcula_desconto();		
+	});
+	
+	$(document).on("change","#data",function(){		
+		if( $("#taxa").val() > 0 )
+			calcula_desconto();		
+	});	
 });
+
+function calcula_desconto(){
+	data = new Date( $("#data").val() );	
+	
+	desconto = 0.0;
+	
+	$("#tb_bordero").children("tr").each(function(index, element) {
+		data_elemento = new Date( $( element ).children("td:eq(4)").html() );
+		
+		var days = ( data_elemento.getTime() - data.getTime() ) / 86400000;
+		
+		if( days < 0 );
+		else
+			desconto = parseFloat( days * $("#taxa").val() );
+		
+	});
+	
+	$("#desconto").val( desconto );
+
+	$("#liquido").val( parseFloat( $("#bruto").val() - desconto ) );
+
+};
